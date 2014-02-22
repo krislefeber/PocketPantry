@@ -1,9 +1,9 @@
 <?php
 /**
- * GroceryFixture
+ * ItemFixture
  *
  */
-class GroceryFixture extends CakeTestFixture {
+class ItemFixture extends CakeTestFixture {
 
 /**
  * Fields
@@ -14,9 +14,8 @@ class GroceryFixture extends CakeTestFixture {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'qty' => array('type' => 'float', 'null' => true, 'default' => null, 'length' => '10,2'),
-		'expiration' => array('type' => 'date', 'null' => true, 'default' => null),
-		'location_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'unit_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'need_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -33,9 +32,8 @@ class GroceryFixture extends CakeTestFixture {
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'qty' => 1,
-			'expiration' => '2014-02-22',
-			'location_id' => 1,
-			'unit_id' => 1
+			'unit_id' => 1,
+			'need_id' => 1
 		),
 	);
 

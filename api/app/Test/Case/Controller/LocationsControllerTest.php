@@ -15,9 +15,9 @@ class LocationsControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.location',
 		'app.grocery',
-		'app.store',
-		'app.need',
-		'app.groceries_need'
+		'app.unit',
+		'app.item',
+		'app.need'
 	);
 
 /**

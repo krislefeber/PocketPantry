@@ -6,7 +6,7 @@
 			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th><?php echo $this->Paginator->sort('multiplier'); ?></th>
 			<th><?php echo $this->Paginator->sort('recipe'); ?></th>
-			<th><?php echo $this->Paginator->sort('Name'); ?></th>
+			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($plans as $plan): ?>
@@ -15,7 +15,7 @@
 		<td><?php echo h($plan['Plan']['date']); ?>&nbsp;</td>
 		<td><?php echo h($plan['Plan']['multiplier']); ?>&nbsp;</td>
 		<td><?php echo h($plan['Plan']['recipe']); ?>&nbsp;</td>
-		<td><?php echo h($plan['Plan']['Name']); ?>&nbsp;</td>
+		<td><?php echo h($plan['Plan']['name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $plan['Plan']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $plan['Plan']['id'])); ?>

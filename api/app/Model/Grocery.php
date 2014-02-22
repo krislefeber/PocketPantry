@@ -3,9 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Grocery Model
  *
- * @property Store $Store
  * @property Location $Location
- * @property Need $Need
+ * @property Unit $Unit
  */
 class Grocery extends AppModel {
 
@@ -35,41 +34,19 @@ class Grocery extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Store' => array(
-			'className' => 'Store',
-			'foreignKey' => 'store_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Location' => array(
 			'className' => 'Location',
 			'foreignKey' => 'location_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
-	);
-
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
-	public $hasAndBelongsToMany = array(
-		'Need' => array(
-			'className' => 'Need',
-			'joinTable' => 'groceries_needs',
-			'foreignKey' => 'grocery_id',
-			'associationForeignKey' => 'need_id',
-			'unique' => 'keepExisting',
+		),
+		'Unit' => array(
+			'className' => 'Unit',
+			'foreignKey' => 'unit_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
+			'order' => ''
 		)
 	);
-
 }

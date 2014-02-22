@@ -14,7 +14,10 @@ class UnitsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.unit',
-		'app.groceries_need'
+		'app.grocery',
+		'app.location',
+		'app.item',
+		'app.need'
 	);
 
 /**

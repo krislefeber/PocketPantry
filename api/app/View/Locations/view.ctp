@@ -33,8 +33,8 @@
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Qty'); ?></th>
 		<th><?php echo __('Expiration'); ?></th>
-		<th><?php echo __('Store Id'); ?></th>
 		<th><?php echo __('Location Id'); ?></th>
+		<th><?php echo __('Unit Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($location['Grocery'] as $grocery): ?>
@@ -43,8 +43,8 @@
 			<td><?php echo $grocery['name']; ?></td>
 			<td><?php echo $grocery['qty']; ?></td>
 			<td><?php echo $grocery['expiration']; ?></td>
-			<td><?php echo $grocery['store_id']; ?></td>
 			<td><?php echo $grocery['location_id']; ?></td>
+			<td><?php echo $grocery['unit_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'groceries', 'action' => 'view', $grocery['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'groceries', 'action' => 'edit', $grocery['id'])); ?>

@@ -6,8 +6,8 @@
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('qty'); ?></th>
 			<th><?php echo $this->Paginator->sort('expiration'); ?></th>
-			<th><?php echo $this->Paginator->sort('store_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('location_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('unit_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($groceries as $grocery): ?>
@@ -17,10 +17,10 @@
 		<td><?php echo h($grocery['Grocery']['qty']); ?>&nbsp;</td>
 		<td><?php echo h($grocery['Grocery']['expiration']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($grocery['Store']['name'], array('controller' => 'stores', 'action' => 'view', $grocery['Store']['id'])); ?>
+			<?php echo $this->Html->link($grocery['Location']['name'], array('controller' => 'locations', 'action' => 'view', $grocery['Location']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($grocery['Location']['name'], array('controller' => 'locations', 'action' => 'view', $grocery['Location']['id'])); ?>
+			<?php echo $this->Html->link($grocery['Unit']['name'], array('controller' => 'units', 'action' => 'view', $grocery['Unit']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $grocery['Grocery']['id'])); ?>
@@ -48,11 +48,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Grocery'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Store'), array('controller' => 'stores', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Needs'), array('controller' => 'needs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Need'), array('controller' => 'needs', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Unit'), array('controller' => 'units', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

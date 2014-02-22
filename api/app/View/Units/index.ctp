@@ -36,7 +36,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Unit'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Groceries Needs'), array('controller' => 'groceries_needs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Groceries Need'), array('controller' => 'groceries_needs', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Groceries'), array('controller' => 'groceries', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Grocery'), array('controller' => 'groceries', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Items'), array('controller' => 'items', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Item'), array('controller' => 'items', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

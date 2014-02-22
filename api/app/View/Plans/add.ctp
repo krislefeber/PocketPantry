@@ -6,7 +6,7 @@
 		echo $this->Form->input('date');
 		echo $this->Form->input('multiplier');
 		echo $this->Form->input('recipe');
-		echo $this->Form->input('Name');
+		echo $this->Form->input('name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

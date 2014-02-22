@@ -3,7 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Unit Model
  *
- * @property GroceriesNeed $GroceriesNeed
+ * @property Grocery $Grocery
+ * @property Item $Item
  */
 class Unit extends AppModel {
 
@@ -33,8 +34,21 @@ class Unit extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'GroceriesNeed' => array(
-			'className' => 'GroceriesNeed',
+		'Grocery' => array(
+			'className' => 'Grocery',
+			'foreignKey' => 'unit_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Item' => array(
+			'className' => 'Item',
 			'foreignKey' => 'unit_id',
 			'dependent' => false,
 			'conditions' => '',

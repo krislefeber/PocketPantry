@@ -14,10 +14,10 @@ class NeedsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.need',
+		'app.item',
+		'app.unit',
 		'app.grocery',
-		'app.store',
-		'app.location',
-		'app.groceries_need'
+		'app.location'
 	);
 
 /**

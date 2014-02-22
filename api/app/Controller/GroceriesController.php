@@ -55,10 +55,9 @@ class GroceriesController extends AppController {
 				$this->Session->setFlash(__('The grocery could not be saved. Please, try again.'));
 			}
 		}
-		$stores = $this->Grocery->Store->find('list');
 		$locations = $this->Grocery->Location->find('list');
-		$needs = $this->Grocery->Need->find('list');
-		$this->set(compact('stores', 'locations', 'needs'));
+		$units = $this->Grocery->Unit->find('list');
+		$this->set(compact('locations', 'units'));
 	}
 
 /**
@@ -83,10 +82,9 @@ class GroceriesController extends AppController {
 			$options = array('conditions' => array('Grocery.' . $this->Grocery->primaryKey => $id));
 			$this->request->data = $this->Grocery->find('first', $options);
 		}
-		$stores = $this->Grocery->Store->find('list');
 		$locations = $this->Grocery->Location->find('list');
-		$needs = $this->Grocery->Need->find('list');
-		$this->set(compact('stores', 'locations', 'needs'));
+		$units = $this->Grocery->Unit->find('list');
+		$this->set(compact('locations', 'units'));
 	}
 
 /**

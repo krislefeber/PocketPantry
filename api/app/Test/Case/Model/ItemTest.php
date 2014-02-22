@@ -1,11 +1,11 @@
 <?php
-App::uses('Grocery', 'Model');
+App::uses('Item', 'Model');
 
 /**
- * Grocery Test Case
+ * Item Test Case
  *
  */
-class GroceryTest extends CakeTestCase {
+class ItemTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,9 +13,9 @@ class GroceryTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.grocery',
-		'app.location',
-		'app.unit'
+		'app.item',
+		'app.unit',
+		'app.need'
 	);
 
 /**
@@ -25,7 +25,7 @@ class GroceryTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Grocery = ClassRegistry::init('Grocery');
+		$this->Item = ClassRegistry::init('Item');
 	}
 
 /**
@@ -34,7 +34,7 @@ class GroceryTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Grocery);
+		unset($this->Item);
 
 		parent::tearDown();
 	}

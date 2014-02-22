@@ -1,11 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Store Model
+ * Item Model
  *
- * @property Grocery $Grocery
+ * @property Unit $Unit
+ * @property Need $Need
  */
-class Store extends AppModel {
+class Item extends AppModel {
 
 /**
  * Validation rules
@@ -28,24 +29,24 @@ class Store extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'Grocery' => array(
-			'className' => 'Grocery',
-			'foreignKey' => 'store_id',
-			'dependent' => false,
+	public $belongsTo = array(
+		'Unit' => array(
+			'className' => 'Unit',
+			'foreignKey' => 'unit_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'order' => ''
+		),
+		'Need' => array(
+			'className' => 'Need',
+			'foreignKey' => 'need_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
-
 }

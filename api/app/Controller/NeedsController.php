@@ -55,8 +55,6 @@ class NeedsController extends AppController {
 				$this->Session->setFlash(__('The need could not be saved. Please, try again.'));
 			}
 		}
-		$groceries = $this->Need->Grocery->find('list');
-		$this->set(compact('groceries'));
 	}
 
 /**
@@ -81,8 +79,6 @@ class NeedsController extends AppController {
 			$options = array('conditions' => array('Need.' . $this->Need->primaryKey => $id));
 			$this->request->data = $this->Need->find('first', $options);
 		}
-		$groceries = $this->Need->Grocery->find('list');
-		$this->set(compact('groceries'));
 	}
 
 /**

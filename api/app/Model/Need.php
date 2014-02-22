@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Need Model
  *
- * @property Grocery $Grocery
+ * @property Item $Item
  */
 class Need extends AppModel {
 
@@ -28,23 +28,23 @@ class Need extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasAndBelongsToMany associations
+ * hasMany associations
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'Grocery' => array(
-			'className' => 'Grocery',
-			'joinTable' => 'groceries_needs',
+	public $hasMany = array(
+		'Item' => array(
+			'className' => 'Item',
 			'foreignKey' => 'need_id',
-			'associationForeignKey' => 'grocery_id',
-			'unique' => 'keepExisting',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
+			'exclusive' => '',
 			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 

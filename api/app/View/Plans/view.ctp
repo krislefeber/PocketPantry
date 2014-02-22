@@ -23,7 +23,7 @@
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($plan['Plan']['Name']); ?>
+			<?php echo h($plan['Plan']['name']); ?>
 			&nbsp;
 		</dd>
 	</dl>
