@@ -15,7 +15,6 @@ class StoreTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.store',
 		'app.grocery',
-		'app.type',
 		'app.location',
 		'app.need',
 		'app.groceries_need'

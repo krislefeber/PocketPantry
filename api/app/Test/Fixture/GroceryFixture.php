@@ -15,7 +15,6 @@ class GroceryFixture extends CakeTestFixture {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'qty' => array('type' => 'float', 'null' => true, 'default' => null, 'length' => '10,2'),
 		'expiration' => array('type' => 'date', 'null' => true, 'default' => null),
-		'type_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'store_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'location_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'indexes' => array(
@@ -35,7 +34,6 @@ class GroceryFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'qty' => 1,
 			'expiration' => '2014-02-22',
-			'type_id' => 1,
 			'store_id' => 1,
 			'location_id' => 1
 		),
