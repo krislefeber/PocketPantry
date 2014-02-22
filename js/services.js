@@ -8,10 +8,10 @@
 angular.module('myApp.services', []).factory('cakeService', function($log, $http) {
     return {
         cakeIndex: function(apiFunction) {
-			return $http.get("/PocketPantry/api/" + apiFunction + "/index.json").then(function(data) {
-				$log.log(data);
-				return data.data.contents.result;
-			});
+			return $http.get("/PocketPantry/api/" + apiFunction + "/index.json");
+        },
+        cakeView: function(apiFunction, id) {
+			return $http.get("/PocketPantry/api/" + apiFunction + "/view/" + id + ".json");
         }
     };
 });

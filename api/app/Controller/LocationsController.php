@@ -38,6 +38,7 @@ class LocationsController extends AppController {
 		if (!$this->Location->exists($id)) {
 			throw new NotFoundException(__('Invalid location'));
 		}
+		$this->Location->recursive = 2;
 		$options = array('conditions' => array('Location.' . $this->Location->primaryKey => $id));
 		$this->set('location', $this->Location->find('first', $options));
 		$this->set('_serialize', array('location'));
