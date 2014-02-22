@@ -23,6 +23,8 @@ class UnitsController extends AppController {
 	public function index() {
 		$this->Unit->recursive = 0;
 		$this->set('units', $this->Paginator->paginate());
+		$this->set('unitsAll', $this->Unit->find('all'));
+		$this->set('_serialize', array('unitsAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class UnitsController extends AppController {
 		}
 		$options = array('conditions' => array('Unit.' . $this->Unit->primaryKey => $id));
 		$this->set('unit', $this->Unit->find('first', $options));
+		$this->set('_serialize', array('unit'));
 	}
 
 /**

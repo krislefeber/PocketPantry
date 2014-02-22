@@ -23,6 +23,8 @@ class PlansController extends AppController {
 	public function index() {
 		$this->Plan->recursive = 0;
 		$this->set('plans', $this->Paginator->paginate());
+		$this->set('plansAll', $this->Plan->find('all'));
+		$this->set('_serialize', array('plansAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class PlansController extends AppController {
 		}
 		$options = array('conditions' => array('Plan.' . $this->Plan->primaryKey => $id));
 		$this->set('plan', $this->Plan->find('first', $options));
+		$this->set('_serialize', array('plan'));
 	}
 
 /**

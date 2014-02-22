@@ -15,6 +15,8 @@ class ItemTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.item',
 		'app.unit',
+		'app.grocery',
+		'app.location',
 		'app.need'
 	);
 

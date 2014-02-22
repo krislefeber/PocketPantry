@@ -23,6 +23,8 @@ class GroceriesController extends AppController {
 	public function index() {
 		$this->Grocery->recursive = 0;
 		$this->set('groceries', $this->Paginator->paginate());
+		$this->set('groceriesAll', $this->Grocery->find('all'));
+		$this->set('_serialize', array('groceriesAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class GroceriesController extends AppController {
 		}
 		$options = array('conditions' => array('Grocery.' . $this->Grocery->primaryKey => $id));
 		$this->set('grocery', $this->Grocery->find('first', $options));
+		$this->set('_serialize', array('grocery'));
 	}
 
 /**

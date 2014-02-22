@@ -23,6 +23,8 @@ class ItemsController extends AppController {
 	public function index() {
 		$this->Item->recursive = 0;
 		$this->set('items', $this->Paginator->paginate());
+		$this->set('itemsAll', $this->Item->find('all'));
+		$this->set('_serialize', array('itemsAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class ItemsController extends AppController {
 		}
 		$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
 		$this->set('item', $this->Item->find('first', $options));
+		$this->set('_serialize', array('item'));
 	}
 
 /**

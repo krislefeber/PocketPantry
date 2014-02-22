@@ -15,7 +15,9 @@ class LocationTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.location',
 		'app.grocery',
-		'app.unit'
+		'app.unit',
+		'app.item',
+		'app.need'
 	);
 
 /**

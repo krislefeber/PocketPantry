@@ -23,6 +23,8 @@ class LocationsController extends AppController {
 	public function index() {
 		$this->Location->recursive = 0;
 		$this->set('locations', $this->Paginator->paginate());
+		$this->set('locationsAll', $this->Location->find('all'));
+		$this->set('_serialize', array('locationsAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class LocationsController extends AppController {
 		}
 		$options = array('conditions' => array('Location.' . $this->Location->primaryKey => $id));
 		$this->set('location', $this->Location->find('first', $options));
+		$this->set('_serialize', array('location'));
 	}
 
 /**

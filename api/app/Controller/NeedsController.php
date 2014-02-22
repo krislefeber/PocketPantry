@@ -23,6 +23,8 @@ class NeedsController extends AppController {
 	public function index() {
 		$this->Need->recursive = 0;
 		$this->set('needs', $this->Paginator->paginate());
+		$this->set('needsAll', $this->Need->find('all'));
+		$this->set('_serialize', array('needsAll'));
 	}
 
 /**
@@ -38,6 +40,7 @@ class NeedsController extends AppController {
 		}
 		$options = array('conditions' => array('Need.' . $this->Need->primaryKey => $id));
 		$this->set('need', $this->Need->find('first', $options));
+		$this->set('_serialize', array('need'));
 	}
 
 /**
