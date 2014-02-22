@@ -3,9 +3,16 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+  controller('locationsCtrl', ['$scope','cakeService', function($scope, cakeService) {
+  	$scope.list = cakeService.cakeIndex("Locations");
 
   }])
-  .controller('MyCtrl2', [function() {
+  .controller('needsCtrl', [function() {
+
+  }])
+  .controller('homeCtrl', [function() {
+
+  }])
+  .controller('recipeCtrl', [function() {
 
   }]);

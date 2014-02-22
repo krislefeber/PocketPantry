@@ -8,10 +8,13 @@ angular.module('myApp', [
   'myApp.services',
   'myApp.directives',
   'myApp.controllers',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.utils'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.when('/locations', {templateUrl: 'partials/locations.html', controller: 'locationsCtrl'});
+  $routeProvider.when('/needs', {templateUrl: 'partials/needs.html', controller: 'needsCtrl'});
+  $routeProvider.when('/recipe', {templateUrl: 'partials/recipe.html', controller: 'recipeCtrl'});
+  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 }]);
