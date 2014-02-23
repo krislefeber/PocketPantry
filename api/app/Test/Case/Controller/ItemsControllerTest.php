@@ -68,4 +68,12 @@ class ItemsControllerTest extends ControllerTestCase {
 	public function testDelete() {
 	}
 
+/**
+ * testJsonDelete method
+ *
+ * @return void
+ */
+	public function testJsonDelete() {
+	}
+
 }

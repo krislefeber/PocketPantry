@@ -67,11 +67,15 @@ class PlansController extends AppController {
  * @return void
  */
 	public function jsonAdd() {
-		$status = array('status' => 'Failure');
+		$status = array(
+			'status' => 'Failure',
+			'id' => ''
+		);
 		if ($this->request->is('post')) {
 			$this->Plan->create();
 			if ($this->Plan->save($this->request->data)) {
 				$status['status'] = 'Success';
+				$status['id'] = $this->Plan->id;
 			}
 		}
         $this->set(compact('status'));
@@ -121,4 +125,16 @@ class PlansController extends AppController {
 			$this->Session->setFlash(__('The plan could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+
+	public function jsonDelete($id = null) {
+		$status = array('status' => 'Failure');
+		$this->Plan->id = $id;
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Plan->delete()) {
+			$status['status'] = 'Success';
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}}

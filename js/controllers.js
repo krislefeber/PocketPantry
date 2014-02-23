@@ -30,10 +30,19 @@ angular.module('myApp.controllers', []).
 		}
   	}
 
+  	$scope.removeGrocery = function(grocery,location) {
+  		cakeService.cakeDelete('Groceries',grocery.id).then(function(data) {
+  			if (data.data.status.status == "Success") {
+				var idx = location.groceries.indexOf(grocery);
+				location.groceries.splice(idx,1)
+  			}
+  		});
+  	}
+
   	$scope.addItem = function(item,location) {
   		cakeService.cakeAdd('Groceries',{name:item.name,qty:item.qty,location_id:location.Location.id,unit_id:item.unit.Unit.id}).then(function(data) {
   			if (data.data.status.status == "Success") {
-  				location.groceries.splice(0,0,{"name":item.name,"qty":item.qty,"Unit":{"abbreviation":item.unit.Unit.abbreviation}});
+  				location.groceries.splice(0,0,{"id":data.data.status.id,"name":item.name,"qty":item.qty,"Unit":{"abbreviation":item.unit.Unit.abbreviation}});
   				item.name = '';
   				item.qty = '';
   				item.unit = '';

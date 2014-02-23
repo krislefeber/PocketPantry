@@ -70,11 +70,15 @@ class GroceriesController extends AppController {
  * @return void
  */
 	public function jsonAdd() {
-		$status = array('status' => 'Failure');
+		$status = array(
+			'status' => 'Failure',
+			'id' => ''
+		);
 		if ($this->request->is('post')) {
 			$this->Grocery->create();
 			if ($this->Grocery->save($this->request->data)) {
 				$status['status'] = 'Success';
+				$status['id'] = $this->Grocery->id;
 			}
 		}
         $this->set(compact('status'));
@@ -127,4 +131,16 @@ class GroceriesController extends AppController {
 			$this->Session->setFlash(__('The grocery could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+
+	public function jsonDelete($id = null) {
+		$status = array('status' => 'Failure');
+		$this->Grocery->id = $id;
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Grocery->delete()) {
+			$status['status'] = 'Success';
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}}

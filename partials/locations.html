@@ -14,8 +14,14 @@
 			</div>
 		</div>
 		<div class="row" ng-hide="location.hide" ng-repeat="grocery in location.groceries">
-			<div class="col-md-offset-2 col-md-2">
-				{{grocery.name}} - {{grocery.qty}} {{grocery.Unit.abbreviation}}
+			<div class="col-md-offset-2 col-md-3">
+				{{grocery.name}}
+			</div>
+			<div class="col-md-1">
+				{{grocery.qty}} {{grocery.Unit.abbreviation}}
+			</div>
+			<div class="col-md-1" ng-click="removeGrocery(grocery,location)">
+				<div class="glyphicon glyphicon-remove remove">&nbsp;</div>	
 			</div>
 		</div>
 		<div class="row form-inline" ng-hide="location.hide" ng-form="subForm">
@@ -36,11 +42,11 @@
 				</div>
 				<button type="button" class="btn btn-default" ng-click="addItem(item,location)">Save</button>
 			</div>
-		</div>
-		<div class="row" ng-hide="location.hide">
-			<div class="col-md-12">
-				&nbsp;
 			</div>
-		</div>
+			<div class="row">
+				<div class="col-md-12">
+					&nbsp;
+				</div>
+			</div>
 	</div>
 </div>

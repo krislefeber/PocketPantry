@@ -15,6 +15,9 @@ angular.module('myApp.services', []).factory('cakeService', function($http) {
         },
         cakeAdd: function(apiFunction,postData) {
 			return $http.post("/PocketPantry/api/" + apiFunction + "/jsonAdd.json", postData);
+        },
+        cakeDelete: function(apiFunction,id) {
+			return $http.post("/PocketPantry/api/" + apiFunction + "/jsonDelete/" + id + ".json");
         }
     };
 }).factory('yummlyService',function($log, $http){

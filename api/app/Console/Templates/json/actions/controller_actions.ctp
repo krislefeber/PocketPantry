@@ -89,11 +89,15 @@
  * @return void
  */
 	public function <?php echo $admin ?>jsonAdd() {
-		$status = array('status' => 'Failure');
+		$status = array(
+			'status' => 'Failure',
+			'id' => ''
+		);
 		if ($this->request->is('post')) {
 			$this-><?php echo $currentModelName; ?>->create();
 			if ($this-><?php echo $currentModelName; ?>->save($this->request->data)) {
 				$status['status'] = 'Success';
+				$status['id'] = $this-><?php echo $currentModelName; ?>->id;
 			}
 		}
         $this->set(compact('status'));
@@ -170,4 +174,16 @@
 			return $this->flash(__('The <?php echo strtolower($singularHumanName); ?> could not be deleted. Please, try again.'), array('action' => 'index'));
 		}
 <?php endif; ?>
+	}
+
+
+	public function jsonDelete($id = null) {
+		$status = array('status' => 'Failure');
+		$this-><?php echo $currentModelName; ?>->id = $id;
+		$this->request->onlyAllow('post', 'delete');
+		if ($this-><?php echo $currentModelName; ?>->delete()) {
+			$status['status'] = 'Success';
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}

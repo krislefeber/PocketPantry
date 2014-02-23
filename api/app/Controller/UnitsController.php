@@ -67,11 +67,15 @@ class UnitsController extends AppController {
  * @return void
  */
 	public function jsonAdd() {
-		$status = array('status' => 'Failure');
+		$status = array(
+			'status' => 'Failure',
+			'id' => ''
+		);
 		if ($this->request->is('post')) {
 			$this->Unit->create();
 			if ($this->Unit->save($this->request->data)) {
 				$status['status'] = 'Success';
+				$status['id'] = $this->Unit->id;
 			}
 		}
         $this->set(compact('status'));
@@ -121,4 +125,16 @@ class UnitsController extends AppController {
 			$this->Session->setFlash(__('The unit could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+
+	public function jsonDelete($id = null) {
+		$status = array('status' => 'Failure');
+		$this->Unit->id = $id;
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Unit->delete()) {
+			$status['status'] = 'Success';
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}}
