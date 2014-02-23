@@ -1,1 +1,15 @@
-<p>get shopping</p>
+<div class="container" ng-form="mainForm">
+	<div class="page-header">
+		<h1>Locations</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<ul class="list-unstyled">
+				<li ng-repeat="need in needs">
+					<input type="checkbox" ng-model="need.done">
+					<span class="done-{{need.done}}">{{need.text}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

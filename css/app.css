@@ -15,3 +15,17 @@ body {
 .remove {
 	color:#ad1d28;
 }
+
+.logo {
+	height: 50px;
+}
+
+.titletext {
+	font-family: 'Cabin', sans-serif;
+}
+.darker {
+	color: #331100;
+}
+.done-true {
+  text-decoration: line-through;
+}

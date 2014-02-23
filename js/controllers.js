@@ -52,9 +52,24 @@ angular.module('myApp.controllers', []).
   	}
 
   }])
-  .controller('needsCtrl', [function() {
+	.controller('needsCtrl', ['$scope',function($scope) {
+		$scope.needs = [
+			{text:'Milk', done:false},
+			{text:'Eggs', done:false},
+			{text:'Chicken Thighs', done:false},
+			{text:'Onions', done:false},
+			{text:'Lettuce', done:false},
+			{text:'Tomato', done:false},
+			{text:'Taco Sauce', done:false},
+			{text:'beef', done:false},
+			{text:'cheese', done:false},
+			{text:'nacho cheese', done:false},
+			{text:'salsa', done:false},
+			{text:'sour cream', done:false},
+			{text:'Tortilla', done:false}
+		];
 
-  }])
+	}])
   .controller('homeCtrl', [function() {
 
   }])
