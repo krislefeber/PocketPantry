@@ -38,6 +38,7 @@ class UnitsController extends AppController {
 		if (!$this->Unit->exists($id)) {
 			throw new NotFoundException(__('Invalid unit'));
 		}
+		$this->Unit->recursive = 2;
 		$options = array('conditions' => array('Unit.' . $this->Unit->primaryKey => $id));
 		$this->set('unit', $this->Unit->find('first', $options));
 		$this->set('_serialize', array('unit'));
@@ -58,6 +59,23 @@ class UnitsController extends AppController {
 				$this->Session->setFlash(__('The unit could not be saved. Please, try again.'));
 			}
 		}
+	}
+
+/**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Unit->create();
+			if ($this->Unit->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 /**

@@ -4,6 +4,7 @@
 		<legend><?php echo __('Add Unit'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+		echo $this->Form->input('abbreviation');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

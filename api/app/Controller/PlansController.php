@@ -38,6 +38,7 @@ class PlansController extends AppController {
 		if (!$this->Plan->exists($id)) {
 			throw new NotFoundException(__('Invalid plan'));
 		}
+		$this->Plan->recursive = 2;
 		$options = array('conditions' => array('Plan.' . $this->Plan->primaryKey => $id));
 		$this->set('plan', $this->Plan->find('first', $options));
 		$this->set('_serialize', array('plan'));
@@ -58,6 +59,23 @@ class PlansController extends AppController {
 				$this->Session->setFlash(__('The plan could not be saved. Please, try again.'));
 			}
 		}
+	}
+
+/**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Plan->create();
+			if ($this->Plan->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 /**

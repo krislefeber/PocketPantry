@@ -4,12 +4,14 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('abbreviation'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($units as $unit): ?>
 	<tr>
 		<td><?php echo h($unit['Unit']['id']); ?>&nbsp;</td>
 		<td><?php echo h($unit['Unit']['name']); ?>&nbsp;</td>
+		<td><?php echo h($unit['Unit']['abbreviation']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $unit['Unit']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id'])); ?>

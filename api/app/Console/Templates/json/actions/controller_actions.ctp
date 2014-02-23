@@ -40,6 +40,7 @@
 		if (!$this-><?php echo $currentModelName; ?>->exists($id)) {
 			throw new NotFoundException(__('Invalid <?php echo strtolower($singularHumanName); ?>'));
 		}
+		$this-><?php echo $currentModelName ?>->recursive = 2;
 		$options = array('conditions' => array('<?php echo $currentModelName; ?>.' . $this-><?php echo $currentModelName; ?>->primaryKey => $id));
 		$this->set('<?php echo $singularName; ?>', $this-><?php echo $currentModelName; ?>->find('first', $options));
 		$this->set('_serialize', array('<?php echo $singularName ?>'));
@@ -80,6 +81,23 @@
 		echo "\t\t\$this->set(compact(".join(', ', $compact)."));\n";
 	endif;
 ?>
+	}
+
+/**
+ * <?php echo $admin ?>json add method
+ *
+ * @return void
+ */
+	public function <?php echo $admin ?>jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this-><?php echo $currentModelName; ?>->create();
+			if ($this-><?php echo $currentModelName; ?>->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 <?php $compact = array(); ?>

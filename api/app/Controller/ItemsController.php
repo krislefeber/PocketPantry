@@ -38,6 +38,7 @@ class ItemsController extends AppController {
 		if (!$this->Item->exists($id)) {
 			throw new NotFoundException(__('Invalid item'));
 		}
+		$this->Item->recursive = 2;
 		$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
 		$this->set('item', $this->Item->find('first', $options));
 		$this->set('_serialize', array('item'));
@@ -61,6 +62,23 @@ class ItemsController extends AppController {
 		$units = $this->Item->Unit->find('list');
 		$needs = $this->Item->Need->find('list');
 		$this->set(compact('units', 'needs'));
+	}
+
+/**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Item->create();
+			if ($this->Item->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 /**

@@ -62,6 +62,23 @@ class LocationsController extends AppController {
 	}
 
 /**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Location->create();
+			if ($this->Location->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
+	}
+
+/**
  * edit method
  *
  * @throws NotFoundException

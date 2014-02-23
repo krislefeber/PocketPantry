@@ -1,1 +1,76 @@
-<p>find something to eat</p>
+<div class="container">
+	<div class="page-header">
+		<h1>Recipes</h1>
+	</div>
+	<div ng-repeat="recipe in recipes">
+		<div class="row" ng-click="showDetails(recipe)">
+			<div class="col-md-1">
+				<img ng-src={{recipe.smallImageUrls.0}}>
+			</div>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-4">
+						{{recipe.recipeName}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<div class="progress">
+							<div class="progress-bar-info" role="progressbar" aria-valuenow="{{recipe.flavors.bitter}}" aria-valuemin="0" aria-valuemax="1" style="width: {{recipe.flavors.bitter*100}}%">
+								<span class="flavorNames">Bitter</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="progress">
+							<div class="progress-bar-info" role="progressbar" aria-valuenow="{{recipe.flavors.meaty}}" aria-valuemin="0" aria-valuemax="1" style="width: {{recipe.flavors.meaty*100}}%">
+								<span class="flavorNames">Meaty</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="progress">
+							<div class="progress-bar-info" role="progressbar" aria-valuenow="{{recipe.flavors.salty}}" aria-valuemin="0" aria-valuemax="1" style="width: {{recipe.flavors.salty*100}}%">
+								<span class="flavorNames">Salty</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="progress">
+							<div class="progress-bar-info" role="progressbar" aria-valuenow="{{recipe.flavors.sour}}" aria-valuemin="0" aria-valuemax="1" style="width: {{recipe.flavors.sour*100}}%">
+								<span class="flavorNames">Sour</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="progress">
+							<div class="progress-bar-info" role="progressbar" aria-valuenow="{{recipe.flavors.sweet}}" aria-valuemin="0" aria-valuemax="1" style="width: {{recipe.flavors.sweet*100}}%">
+								<span class="flavorNames">Sweet</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-hide="recipe.hide">
+			<div class="col-md-2">
+				&nbsp;
+			</div>
+			<div class="col-md-10">
+				<ul class="list-inline">
+					<li ng-repeat="ingredient in recipe.ingredients">
+						{{ingredient}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" ng-hide="recipe.hide">
+			<div class="col-md-2">
+				&nbsp;
+			</div>
+			<div class="col-md-10">
+			<a ng-href="{{recipe.info.attribution.url}}">{{recipe.info.attribution.url}}</a>
+			</div>
+		</div>
+	</div>
+</div>

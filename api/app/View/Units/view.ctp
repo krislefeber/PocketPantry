@@ -11,6 +11,11 @@
 			<?php echo h($unit['Unit']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Abbreviation'); ?></dt>
+		<dd>
+			<?php echo h($unit['Unit']['abbreviation']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

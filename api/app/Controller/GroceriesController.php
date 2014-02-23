@@ -38,6 +38,7 @@ class GroceriesController extends AppController {
 		if (!$this->Grocery->exists($id)) {
 			throw new NotFoundException(__('Invalid grocery'));
 		}
+		$this->Grocery->recursive = 2;
 		$options = array('conditions' => array('Grocery.' . $this->Grocery->primaryKey => $id));
 		$this->set('grocery', $this->Grocery->find('first', $options));
 		$this->set('_serialize', array('grocery'));
@@ -61,6 +62,23 @@ class GroceriesController extends AppController {
 		$locations = $this->Grocery->Location->find('list');
 		$units = $this->Grocery->Unit->find('list');
 		$this->set(compact('locations', 'units'));
+	}
+
+/**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Grocery->create();
+			if ($this->Grocery->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 /**

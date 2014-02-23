@@ -45,6 +45,14 @@ class LocationsControllerTest extends ControllerTestCase {
 	}
 
 /**
+ * testJsonAdd method
+ *
+ * @return void
+ */
+	public function testJsonAdd() {
+	}
+
+/**
  * testEdit method
  *
  * @return void

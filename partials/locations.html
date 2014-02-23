@@ -1,21 +1,46 @@
-<div class="page-header">
-	<h1>Locations</h1>
-</div>
-<div  ng-repeat="location in locations">
-	<div class="row">
-		<div class="col-md-2">
-			<button type="button" class="btn btn-default btn-block" ng-click="getGroceries(location)">{{location.Location.name}}</button>
+<div class="container" ng-form="mainForm">
+	<div class="page-header">
+		<h1>Locations</h1>
+	</div>
+	<div  ng-repeat="location in locations">
+		<div class="row">
+			<div class="col-md-2">
+				<button type="button" class="btn btn-default btn-block" ng-click="getGroceries(location)">{{location.Location.name}}</button>
+			</div>
+			<div class="col-md-1">
+				<div ng-show="location.loading">
+					<img class="loadingGif" src="img/loading.gif">
+				</div>
+			</div>
 		</div>
-		<div class="col-md-1">
-			<div ng-show="location.loading">
-				<img class="loadingGif" src="img/loading.gif">
+		<div class="row" ng-hide="location.hide" ng-repeat="grocery in location.groceries">
+			<div class="col-md-offset-2 col-md-2">
+				{{grocery.name}} - {{grocery.qty}} {{grocery.Unit.abbreviation}}
+			</div>
+		</div>
+		<div class="row form-inline" ng-hide="location.hide" ng-form="subForm">
+			<div class="col-md-10 col-md-offset-2">
+				<div class="form-group">
+					<label class="sr-only" for="itemName">item name</label>
+					<input type="text" placeholder="Item" ng-model="item.name" name="itemName" id="itemName" required class="form-control">
+				</div>
+				<div class="form-group">
+					<label class="sr-only" for="itemQty">item quantanty</label>
+					<input type="number" placeholder="qty" ng-model="item.qty" required class="form-control" le>
+				</div>
+				<div class="form-group">
+					<label class="sr-only" for="itemName">item name</label>
+					<select ng-model="item.unit" ng-options="c.Unit.name for c in units" required class="form-control">
+						<option value="">choose unit</option>
+					</select>
+				</div>
+				<button type="button" class="btn btn-default" ng-click="addItem(item,location)">Save</button>
+			</div>
+		</div>
+		<div class="row" ng-hide="location.hide">
+			<div class="col-md-12">
+				&nbsp;
 			</div>
 		</div>
 	</div>
-	<div class="row" ng-hide="location.loading" ng-repeat="grocery in location.groceries">
-		<div class="col-md-offset-3 col-md-4">
-		{{grocery.name}} - {{grocery.qty}} {{grocery.Unit.abbreviation}}
-		</div>
-	</div>
 </div>
-{{locations}}

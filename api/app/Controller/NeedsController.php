@@ -38,6 +38,7 @@ class NeedsController extends AppController {
 		if (!$this->Need->exists($id)) {
 			throw new NotFoundException(__('Invalid need'));
 		}
+		$this->Need->recursive = 2;
 		$options = array('conditions' => array('Need.' . $this->Need->primaryKey => $id));
 		$this->set('need', $this->Need->find('first', $options));
 		$this->set('_serialize', array('need'));
@@ -58,6 +59,23 @@ class NeedsController extends AppController {
 				$this->Session->setFlash(__('The need could not be saved. Please, try again.'));
 			}
 		}
+	}
+
+/**
+ * json add method
+ *
+ * @return void
+ */
+	public function jsonAdd() {
+		$status = array('status' => 'Failure');
+		if ($this->request->is('post')) {
+			$this->Need->create();
+			if ($this->Need->save($this->request->data)) {
+				$status['status'] = 'Success';
+			}
+		}
+        $this->set(compact('status'));
+        $this->set('_serialize', array('status'));
 	}
 
 /**
